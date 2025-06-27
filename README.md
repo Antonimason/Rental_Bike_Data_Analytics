@@ -1,68 +1,81 @@
-🚲 Bicycle Rental Data Analysis & Predictive Modeling
-This project presents an end-to-end data analysis and predictive modeling workflow based on a bicycle rental dataset. The main objectives were to understand the factors influencing rider satisfaction and rental cost, while applying various data science techniques including feature engineering, dimensionality reduction, statistical testing, and machine learning.
+# 🚲 Bicycle Rental Data Analysis & Predictive Modeling
 
-📊 Project Objectives
-Analyze factors impacting rider satisfaction.
+This project presents an end-to-end data analysis and predictive modeling workflow based on a bicycle rental dataset. The main objectives were to understand the factors influencing **rider satisfaction** and **rental cost**, while applying various data science techniques including feature engineering, dimensionality reduction, statistical testing, and machine learning.
 
-Predict bicycle rental costs.
+---
 
-Evaluate dimensionality reduction and feature selection techniques.
+## 📊 Project Objectives
 
-Compare classification and regression models.
+- Analyze factors impacting rider satisfaction.
+- Predict bicycle rental costs.
+- Evaluate dimensionality reduction and feature selection techniques.
+- Compare classification and regression models.
+- Provide actionable recommendations for pricing and service optimization.
 
-Provide actionable recommendations for pricing and service optimization.
+---
 
-🧹 Data Preprocessing
-Conversion & Cleaning: Dataset originally in XLSX, converted to CSV.
+## 🧹 Data Preprocessing
 
-Missing Value Imputation: Custom function using feature-based "neighbors" with median (numeric) or mode (categorical).
+- **Conversion & Cleaning**: Dataset originally in XLSX, converted to CSV.
+- **Missing Value Imputation**: Custom function using feature-based "neighbors" with median (numeric) or mode (categorical).
+- **Outlier Detection**: Visual checks revealed no major outliers.
+- **Feature Creation**: New variables created including speed, cost per km, and cost per minute.
+- **Encoding & Scaling**: Applied OneHotEncoding, LabelEncoding, MinMaxScaler, and StandardScaler depending on the feature type and algorithm requirements.
 
-Outlier Detection: Visual checks revealed no major outliers.
+---
 
-Feature Creation: New variables created including speed, cost per km, and cost per minute.
+## ⚙️ Feature Engineering & Dimensionality Reduction
 
-Encoding & Scaling: Applied OneHotEncoding, LabelEncoding, MinMaxScaler, and StandardScaler depending on the feature type and algorithm requirements.
+- **Feature Selection**: Random Forest used to identify variables most relevant to satisfaction.
+- **PCA**: Reduced to 20 components, retaining 99.5% of variance.
+- **LDA**: Reduced to 2 linear discriminants optimized for classification.
 
-⚙️ Feature Engineering & Dimensionality Reduction
-Feature Selection: Random Forest used to identify variables most relevant to satisfaction.
+---
 
-PCA: Reduced to 20 components, retaining 99.5% of variance.
+## 📈 Statistical Analysis
 
-LDA: Reduced to 2 linear discriminants optimized for classification.
+- Contingency tables for city vs. weather, city vs. bike model, and bike model vs. satisfaction.
+- Normality testing using Shapiro-Wilk (none of the variables followed a normal distribution).
+- ANOVA and t-tests confirmed no significant differences in cost across satisfaction levels or between cities.
+- Covariance and correlation analysis showed strong relationships between duration and cost.
 
-📈 Statistical Analysis
-Contingency Tables: Explored relationships between city, bike model, and weather.
+---
 
-Normality Testing: Shapiro-Wilk test suggested non-normal distributions.
+## 🤖 Machine Learning Models
 
-ANOVA & T-Tests: No significant difference found between satisfaction levels or cities in terms of cost.
+### 🔍 Classification – Predicting Rider Satisfaction
 
-Covariance & Correlation: Strong linear relationship between duration and cost (Covariance = 289, R² ≈ 0.82).
+- Models tested: Decision Tree, Random Forest, KNN.
+- Variants: original, scaled, PCA-reduced, and LDA-reduced datasets.
+- Results: Low accuracy and F1-score across all configurations.
+- Conclusion: Satisfaction likely depends on subjective factors not included in the dataset.
 
-🤖 Machine Learning Models
-🔍 Classification – Predicting Rider Satisfaction
-Models tested: Decision Tree, Random Forest, KNN.
+### 💰 Regression – Predicting Rental Cost
 
-Data variations: original, scaled, PCA-reduced, LDA-reduced.
+- Best results from Random Forest Regressor (high R², low MAE/MSE).
+- Hyperparameter tuning via GridSearchCV.
+- 10-fold cross-validation confirmed generalization and performance.
 
-Results: Low accuracy and F1-scores across all models.
+---
 
-Conclusion: Rider satisfaction likely depends on subjective or unrecorded variables not captured in the dataset.
+## 🧩 Key Conclusions
 
-💰 Regression – Predicting Rental Cost
-Best performance from Random Forest Regressor (high R², low MAE/MSE).
+- The dataset contains inconsistencies (e.g., extreme speed values).
+- Rider satisfaction could not be predicted reliably with available data.
+- Cost prediction was successful, mainly due to strong correlation with duration and distance.
+- Improving data quality and including more contextual or subjective features is essential.
 
-Hyperparameter tuning with GridSearchCV.
+---
 
-10-fold cross-validation confirmed generalization and robustness.
+## 📚 References
 
-🧩 Key Conclusions
-The dataset suffers from quality issues (e.g., implausible values like 23 km in 5 minutes).
+- [DataTab – ANOVA & T-Test](https://datatab.net/tutorial/unpaired-t-test)  
+- [IBM – Supervised vs. Unsupervised Learning](https://www.ibm.com/think/topics/supervised-vs-unsupervised-learning)  
+- [BuiltIn – Step-by-step PCA Guide](https://builtin.com/data-science/step-step-explanation-principal-component-analysis)  
+- [Corporate Finance Institute – Covariance](https://corporatefinanceinstitute.com/resources/data-science/covariance/)
 
-Rider satisfaction cannot be accurately predicted with available variables.
+---
 
-Cost prediction was successful thanks to strong relationships with duration and distance.
+## 🔗 GitHub Repository
 
-Improving data quality and completeness is essential, especially for subjective factors.
-
-Final recommendation: use the optimized Random Forest model for cost estimation and revisit data collection strategy for satisfaction modeling.
+[https://github.com/CCT-Dublin/ca2-AntonioGiambra](https://github.com/CCT-Dublin/ca2-AntonioGiambra)
